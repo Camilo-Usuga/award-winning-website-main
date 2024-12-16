@@ -16,40 +16,8 @@ function App() {
       <Story />
       <Contact />
       <Footer />
-      <Timer />
     </main>
   );
 }
-
-import { useState, useRef, useEffect } from "react";
-
-const Timer = () => {
-  const [count, setCount] = useState(0);
-  const intervalRef = useRef(null);
-
-  useEffect(() => {
-    // Configurar el intervalo cuando el componente se monta
-    intervalRef.current = setInterval(() => {
-      setCount((prevCount) => prevCount + 1);
-    }, 1000);
-
-    // Limpiar el intervalo cuando el componente se desmonta
-    return () => {
-      clearInterval(intervalRef.current);
-    };
-  }, []);
-
-  // Función para detener el contador
-  const stopTimer = () => {
-    clearInterval(intervalRef.current);
-  };
-
-  return (
-    <div>
-      <h1>Contador: {count}</h1>
-      <button onClick={stopTimer}>Detener Contador</button>
-    </div>
-  );
-};
 
 export default App;
